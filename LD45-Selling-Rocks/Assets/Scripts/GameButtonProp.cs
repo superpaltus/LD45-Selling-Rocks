@@ -19,6 +19,8 @@ public class GameButtonProp : MonoBehaviour
             GameManagerProp.instance.water = Mathf.Clamp(GameManagerProp.instance.water += m_h20Change, 0, 10000);
             GameManagerProp.instance.oxygen = Mathf.Clamp(GameManagerProp.instance.oxygen += m_o2Change, 0, 100);
             GameManagerProp.instance.pressure = Mathf.Clamp(GameManagerProp.instance.pressure += m_pChange, 0, 2000);
+
+            GameManagerProp.instance.CreateProbe();
         }
     }
 }

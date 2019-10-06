@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4567457666254166083}
   - component: {fileID: 4018942997500077092}
+  - component: {fileID: 122964712}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -44,3 +45,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyCollectSpeed: 3
+  energy: 50
+  temperature: 50
+  water: 5000
+  oxygen: 50
+  pressure: 1000
+--- !u!114 &122964712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989713707376983943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb22a96ffc62f07479c77e9465debbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperature: {fileID: 0}
+  water: {fileID: 0}
+  oxygen: {fileID: 0}
+  pressure: {fileID: 0}

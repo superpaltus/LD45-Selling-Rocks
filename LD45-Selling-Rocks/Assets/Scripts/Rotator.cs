@@ -11,6 +11,8 @@ public class Rotator : MonoBehaviour
     private bool m_planetAnchor;
     [SerializeField]
     private bool m_OSS;
+    [SerializeField]
+    private bool m_Probe;
 
     void Start()
     {
@@ -26,9 +28,13 @@ public class Rotator : MonoBehaviour
             float z = 1f;
             m_myTransform.Rotate(new Vector3(x, y, z) * Time.deltaTime * m_speed);
         }
-        if (m_OSS)
+        else if (m_OSS)
         {
             m_myTransform.Rotate(new Vector3(0f, 1f, 0f) * Time.deltaTime * m_speed);
+        }
+        else if(m_Probe)
+        {
+            m_myTransform.Rotate(new Vector3(0f, 0f, 1f) * Time.deltaTime * m_speed);
         }
     }
 }

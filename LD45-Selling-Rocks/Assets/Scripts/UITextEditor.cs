@@ -10,7 +10,6 @@ public class UITextEditor : MonoBehaviour
     [SerializeField]
     private Text txtEnergy;
 
-    private float m_time;
     private float m_energyTimer;
 
     public static UITextEditor instance { get; private set; }
@@ -22,7 +21,7 @@ public class UITextEditor : MonoBehaviour
 
     private void Start()
     {
-        m_time = 245f;
+
     }
 
     private void Update()
@@ -35,16 +34,16 @@ public class UITextEditor : MonoBehaviour
 
     public void SetTime(float settingValue)
     {
-        m_time = settingValue;
-        ShowTime(m_time);
+        GameManagerProp.instance.time = settingValue;
+        ShowTime(GameManagerProp.instance.time);
     }
 
 
 
     private void TimeDecrease()
     {
-        m_time -= Time.deltaTime;
-        ShowTime(m_time);
+        GameManagerProp.instance.time -= Time.deltaTime;
+        ShowTime(GameManagerProp.instance.time);
     }
 
     private void ShowTime(float settingValue)
