@@ -10,10 +10,14 @@ public class GameButtonProp : MonoBehaviour
     [SerializeField] private int m_pChange;
     [SerializeField] private int m_energyPrice;
 
+    [SerializeField] private AudioClip audioClip;
+
     private int multiplexor = 1;
 
     public void OnButtonPressed()
     {
+        GameManagerProp.instance.audioSource.PlayOneShot(audioClip);
+
         do { multiplexor = Random.Range(-3, 4); }
         while (multiplexor == 0);
         print("multiplexor is : " + multiplexor);

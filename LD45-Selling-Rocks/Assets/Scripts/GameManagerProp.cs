@@ -1,9 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GameManagerProp : MonoBehaviour
 {
+    [Header("Sound")]
+    public AudioSource audioSource;
+    public AudioClip buttonClickAudio;
+    public AudioClip probeShotAudio;
+    public AudioClip endTimerAudio;
+
+    [Header("Main")]
+
     public float energyCollectSpeed = 1f;
 
     public int biomass = 1;
@@ -23,7 +33,13 @@ public class GameManagerProp : MonoBehaviour
     public Transform shotPoint;
     public GameObject probePrefab;
 
+    [Header("End")]
+    public GameObject endPanel;
+    public Text endText;
+
     public static GameManagerProp instance { get; private set; }
+
+    private bool isEnd = false;
 
     private void Awake()
     {
@@ -40,8 +56,11 @@ public class GameManagerProp : MonoBehaviour
 
     private void Update()
     {
-        if (time <= 0f)
+        if (time <= 0f && !isEnd)
         {
+            isEnd = true;
+            audioSource.PlayOneShot(endTimerAudio);
+
             float temperatureScore = 1f - (float)Mathf.Abs(temperature - targetTemperature) / 200f;
             print("TEMP: " + temperatureScore);
             float waterScore = 1f - (float)Mathf.Abs(water - targetWater) / 10000f;
@@ -53,6 +72,8 @@ public class GameManagerProp : MonoBehaviour
             float score = 1000 * (temperatureScore + waterScore + pressureScore + oxygenScore);
             print("total : " + score);
             Time.timeScale = 0f;
+            endPanel.SetActive(true);
+            endText.text = "Score : " + score.ToString("0");
         }
         else
         {
@@ -106,6 +127,7 @@ public class GameManagerProp : MonoBehaviour
 
     public void CreateProbe()
     {
+        audioSource.PlayOneShot(probeShotAudio);
         var newProbe = Instantiate(probePrefab, shotPoint.position, Quaternion.identity, null);
     }
 }
