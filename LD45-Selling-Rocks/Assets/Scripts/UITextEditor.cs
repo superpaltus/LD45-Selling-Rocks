@@ -11,7 +11,6 @@ public class UITextEditor : MonoBehaviour
     private Text txtEnergy;
 
     private float m_time;
-    private int m_energy;
     private float m_energyTimer;
 
     public static UITextEditor instance { get; private set; }
@@ -29,7 +28,7 @@ public class UITextEditor : MonoBehaviour
     private void Update()
     {
         TimeDecrease();
-        if (m_energy < 100) EnergyCollect();
+        if (GameManagerProp.instance.energy < 100) EnergyCollect();
     }
 
     #region Time
@@ -60,21 +59,17 @@ public class UITextEditor : MonoBehaviour
 
     public void PlusEnergy(int plusValue)
     {
-        m_energy += plusValue;
-        ShowEnergy(m_energy);
+        GameManagerProp.instance.energy += plusValue;
+        ShowEnergy(GameManagerProp.instance.energy);
     }
 
     public void MinusEnergy(int minusValue)
     {
-        m_energy -= minusValue;
-        ShowEnergy(m_energy);
+        GameManagerProp.instance.energy -= minusValue;
+        ShowEnergy(GameManagerProp.instance.energy);
     }
 
-    public bool EnoughEnergy(int neededValue)
-    {
-        if (m_energy >= neededValue) return true;
-        else return false;
-    }
+
 
 
 
@@ -84,14 +79,14 @@ public class UITextEditor : MonoBehaviour
         if (m_energyTimer >= 1f)
         {
             m_energyTimer = 0f;
-            m_energy++;
-            ShowEnergy(m_energy);
+            GameManagerProp.instance.energy++;
+            ShowEnergy(GameManagerProp.instance.energy);
         }
     }
 
     private void ShowEnergy(int settingValue)
     {
-        txtEnergy.text = m_energy.ToString("00") + "/100";
+        txtEnergy.text = GameManagerProp.instance.energy.ToString("00") + "/100";
     }
     #endregion
 

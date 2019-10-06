@@ -10,7 +10,17 @@ public class UIScale : MonoBehaviour
     [SerializeField]
     private Color m_inactiveColor;
 
-    private GameObject[] m_blocks = new GameObject[20];
+    [SerializeField] private GameObject[] m_blocks = new GameObject[20];
+
+    private void Start()
+    {
+        GameObject[] m_blocksInvert = new GameObject[20];
+        for(int i=0; i < 20; i++)
+        {
+            m_blocksInvert[i] = m_blocks[19 - i]; 
+        }
+        m_blocks = m_blocksInvert;
+    }
 
     public void SetBlockValue(int settingValue)
     {
@@ -20,8 +30,9 @@ public class UIScale : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < 20; i++)
+        for (int j = 0; j < 20; j++)
         {
+            int i = 19 - j;
             if (i < settingValue)
             {
                 m_blocks[i].GetComponent<Image>().color = m_activeColor;
