@@ -9,6 +9,8 @@ public class UITextEditor : MonoBehaviour
     private Text txtTime;
     [SerializeField]
     private Text txtEnergy;
+    [SerializeField]
+    private Text txtBiomass;
 
     private float m_energyTimer;
 
@@ -59,13 +61,13 @@ public class UITextEditor : MonoBehaviour
     public void PlusEnergy(int plusValue)
     {
         GameManagerProp.instance.energy += plusValue;
-        ShowEnergy(GameManagerProp.instance.energy);
+        ShowEnergy();
     }
 
     public void MinusEnergy(int minusValue)
     {
         GameManagerProp.instance.energy -= minusValue;
-        ShowEnergy(GameManagerProp.instance.energy);
+        ShowEnergy();
     }
 
 
@@ -79,14 +81,19 @@ public class UITextEditor : MonoBehaviour
         {
             m_energyTimer = 0f;
             GameManagerProp.instance.energy++;
-            ShowEnergy(GameManagerProp.instance.energy);
+            ShowEnergy();
+            ShowBiomass();
         }
     }
 
-    private void ShowEnergy(int settingValue)
+    private void ShowEnergy()
     {
         txtEnergy.text = GameManagerProp.instance.energy.ToString("00") + "/100";
     }
     #endregion
 
+    private void ShowBiomass()
+    {
+        txtBiomass.text = GameManagerProp.instance.biomass.ToString("0");
+    }
 }

@@ -50,9 +50,18 @@ public class GameManagerProp : MonoBehaviour
             print("oxy: " + oxygenScore);
             float pressureScore = 1f - (float)Mathf.Abs(pressure - targetPressure) / 2000f;
             print("press: " + pressureScore);
-            float score = 1000 * (temperatureScore + waterScore + pressureScore + oxygenScore) * (float)biomass;
+            float score = 1000 * (temperatureScore + waterScore + pressureScore + oxygenScore);
             print("total : " + score);
             Time.timeScale = 0f;
+        }
+        else
+        {
+            float temperatureScore = 1f - (float)Mathf.Abs(temperature - targetTemperature) / 200f;
+            float waterScore = 1f - (float)Mathf.Abs(water - targetWater) / 10000f;
+            float oxygenScore = 1f - (float)Mathf.Abs(oxygen - targetOxygen) / 100f;
+            float pressureScore = 1f - (float)Mathf.Abs(pressure - targetPressure) / 2000f;
+            float biomassFloat = 1000f * (temperatureScore + waterScore + pressureScore + oxygenScore);
+            biomass = (int)biomassFloat;
         }
     }
 
