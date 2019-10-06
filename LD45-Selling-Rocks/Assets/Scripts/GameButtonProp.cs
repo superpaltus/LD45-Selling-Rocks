@@ -21,10 +21,18 @@ public class GameButtonProp : MonoBehaviour
         if (GameManagerProp.instance.EnoughEnergy(m_energyPrice))
         {
             GameManagerProp.instance.energy -= m_energyPrice;
-            GameManagerProp.instance.temperature = Mathf.Clamp(GameManagerProp.instance.temperature += m_tChange * multiplexor, 0, 200);
-            GameManagerProp.instance.water = Mathf.Clamp(GameManagerProp.instance.water += m_h20Change * multiplexor, 0, 10000);
-            GameManagerProp.instance.oxygen = Mathf.Clamp(GameManagerProp.instance.oxygen += m_o2Change * multiplexor, 0, 100);
-            GameManagerProp.instance.pressure = Mathf.Clamp(GameManagerProp.instance.pressure += m_pChange * multiplexor, 0, 2000);
+
+            float tempPlus = m_tChange * multiplexor / 3f;
+            GameManagerProp.instance.temperature = Mathf.Clamp(GameManagerProp.instance.temperature += (int)tempPlus, 0, 200);
+
+            float waterPlus = m_h20Change * multiplexor / 3f;
+            GameManagerProp.instance.water = Mathf.Clamp(GameManagerProp.instance.water += (int)waterPlus, 0, 10000);
+
+            float oxygenPlus = m_o2Change * multiplexor / 3f;
+            GameManagerProp.instance.oxygen = Mathf.Clamp(GameManagerProp.instance.oxygen += (int)oxygenPlus, 0, 100);
+
+            float plusPressure = m_pChange * multiplexor / 3f;
+            GameManagerProp.instance.pressure = Mathf.Clamp(GameManagerProp.instance.pressure += (int)plusPressure, 0, 2000);
 
             GameManagerProp.instance.CreateProbe();
             TopButtons.instance.ResetButtons();
