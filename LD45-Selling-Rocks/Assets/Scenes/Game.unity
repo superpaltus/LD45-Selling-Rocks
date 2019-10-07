@@ -3588,6 +3588,12 @@ PrefabInstance:
       propertyPath: endText
       value: 
       objectReference: {fileID: 1866995946}
+    - target: {fileID: 4018942997500077092, guid: 9eb6ec58a930acf4cacf8a9ef6e9ec8e,
+        type: 3}
+      propertyPath: asteroidPrefab
+      value: 
+      objectReference: {fileID: 8613015090787839844, guid: d9fe0de479d95ce44a433f6e1a1c1049,
+        type: 3}
     - target: {fileID: 122964712, guid: 9eb6ec58a930acf4cacf8a9ef6e9ec8e, type: 3}
       propertyPath: temperature
       value: 

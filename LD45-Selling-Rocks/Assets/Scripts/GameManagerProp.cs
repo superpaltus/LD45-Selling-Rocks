@@ -41,6 +41,10 @@ public class GameManagerProp : MonoBehaviour
 
     private bool isEnd = false;
 
+    [Header("Asteroid")]
+    [SerializeField]
+    private GameObject asteroidPrefab;
+
     private void Awake()
     {
         instance = this;
@@ -48,6 +52,7 @@ public class GameManagerProp : MonoBehaviour
         StartCoroutine(RandomFlukeTemperature());
         StartCoroutine(RandomFlukeOxygen());
         StartCoroutine(RandomFlukeHydrogen());
+        StartCoroutine(AsteroidCreation());
         targetTemperature = Random.Range(50, 151);
         targetWater = Random.Range(2500, 7501);
         targetOxygen = Random.Range(25, 76);
@@ -123,6 +128,18 @@ public class GameManagerProp : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             water += Random.Range(-1, 2);
         }
+    }
+    IEnumerator AsteroidCreation()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(10f, 15f));
+            Vector3 position = new Vector3(Random.Range(0f,5f), Random.Range(0f, 5f), 0f);
+            position.Normalize();
+            position = position * 12;
+            var newAsteroid = Instantiate(asteroidPrefab,position, Quaternion.identity);
+        }
+        
     }
 
     public void CreateProbe()
