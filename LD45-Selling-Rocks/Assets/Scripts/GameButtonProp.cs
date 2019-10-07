@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameButtonProp : MonoBehaviour
 {
@@ -11,12 +12,24 @@ public class GameButtonProp : MonoBehaviour
     [SerializeField] private int m_energyPrice;
 
     [SerializeField] private AudioClip audioClip;
+    [SerializeField] KeyCode m_Key;
+
 
     private int multiplexor = 1;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(m_Key))
+        {
+            if (GetComponent<Button>().interactable && Time.timeScale != 0f)
+            {
+                OnButtonPressed();
+            }
+        }
+    }
+
     public void OnButtonPressed()
     {
-        GameManagerProp.instance.audioSource.PlayOneShot(audioClip);
 
         do { multiplexor = Random.Range(0, 4); }
         while (multiplexor == 0);
@@ -24,6 +37,8 @@ public class GameButtonProp : MonoBehaviour
 
         if (GameManagerProp.instance.EnoughEnergy(m_energyPrice))
         {
+            GameManagerProp.instance.audioSource.PlayOneShot(audioClip);
+
             GameManagerProp.instance.energy -= m_energyPrice;
 
             float tempPlus = m_tChange * multiplexor / 3f;
