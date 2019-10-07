@@ -102,7 +102,7 @@ public class GameManagerProp : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(0.6f);
-            pressure += Random.Range(-1, 2);
+            pressure -= 1;
         }
     }
     IEnumerator RandomFlukeOxygen()
@@ -110,7 +110,7 @@ public class GameManagerProp : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(2f);
-            oxygen += Random.Range(-1, 2);
+            oxygen -= 1;
         }
     }
     IEnumerator RandomFlukeTemperature()
@@ -118,7 +118,7 @@ public class GameManagerProp : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            temperature += Random.Range(-1, 2);
+            temperature -= 1;
         }
     }
     IEnumerator RandomFlukeHydrogen()
@@ -126,7 +126,7 @@ public class GameManagerProp : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            water += Random.Range(-1, 2);
+            water -= 1;
         }
     }
     IEnumerator AsteroidCreation()
