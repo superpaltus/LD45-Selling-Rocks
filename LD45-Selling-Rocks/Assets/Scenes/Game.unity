@@ -3483,6 +3483,14 @@ PrefabInstance:
       propertyPath: m_Key
       value: 51
       objectReference: {fileID: 0}
+    - target: {fileID: 572074356, guid: 0a1ccae0261440d478f94e8ad830f6c3, type: 3}
+      propertyPath: m_h20Change
+      value: -500
+      objectReference: {fileID: 0}
+    - target: {fileID: 572074356, guid: 0a1ccae0261440d478f94e8ad830f6c3, type: 3}
+      propertyPath: m_o2Change
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 5064758821115099930, guid: 0a1ccae0261440d478f94e8ad830f6c3,
         type: 3}
       propertyPath: m_Key
