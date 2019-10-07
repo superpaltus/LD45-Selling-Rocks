@@ -13,10 +13,10 @@ public class AsteroidBehaviour : MonoBehaviour
 
     private void Start()
     {
-        m_temperatureChange = Random.Range(-10, 11);
-        m_waterChange = Random.Range(-1000, 1001);
-        m_oxygenChange = Random.Range(-5, 6);
-        m_pressureChange = Random.Range(-100, 101);
+        m_temperatureChange = Random.Range(-30, 31);
+        m_waterChange = Random.Range(-3000, 3001);
+        m_oxygenChange = Random.Range(-15, 16);
+        m_pressureChange = Random.Range(-300, 301);
     }
 
     private void Update()
