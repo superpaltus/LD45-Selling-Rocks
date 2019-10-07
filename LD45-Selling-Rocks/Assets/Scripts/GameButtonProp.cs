@@ -18,7 +18,7 @@ public class GameButtonProp : MonoBehaviour
     {
         GameManagerProp.instance.audioSource.PlayOneShot(audioClip);
 
-        do { multiplexor = Random.Range(-3, 4); }
+        do { multiplexor = Random.Range(0, 4); }
         while (multiplexor == 0);
         print("multiplexor is : " + multiplexor);
 
