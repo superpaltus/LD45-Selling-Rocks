@@ -20,6 +20,13 @@ public class TopButtons : MonoBehaviour
     private Button temperatureButton;
     [SerializeField]
     private Button pressureButton;
+    [SerializeField]
+    private float m_buttonsChangeTime = 1f;
+
+    private void Start()
+    {
+        StartCoroutine(AutoResetButtons());
+    }
 
     public void ResetButtons()
     {
@@ -68,6 +75,15 @@ public class TopButtons : MonoBehaviour
                 temperatureButton.interactable = false;
                 pressureButton.interactable = true;
                 break;
+        }
+    }
+
+    IEnumerator AutoResetButtons()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(m_buttonsChangeTime);
+            ResetButtons();
         }
     }
 }

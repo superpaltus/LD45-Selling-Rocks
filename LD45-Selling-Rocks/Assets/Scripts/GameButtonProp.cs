@@ -39,7 +39,7 @@ public class GameButtonProp : MonoBehaviour
             GameManagerProp.instance.pressure = Mathf.Clamp(GameManagerProp.instance.pressure += (int)plusPressure, 0, 2000);
 
             GameManagerProp.instance.CreateProbe();
-            TopButtons.instance.ResetButtons();
+            //TopButtons.instance.ResetButtons();
         }
     }
 }
