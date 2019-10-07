@@ -15,7 +15,7 @@ public class GameButtonProp : MonoBehaviour
     [SerializeField] KeyCode m_Key;
 
 
-    private int multiplexor = 1;
+    private float multiplexor = 1;
 
     private void Update()
     {
@@ -31,7 +31,7 @@ public class GameButtonProp : MonoBehaviour
     public void OnButtonPressed()
     {
 
-        do { multiplexor = Random.Range(0, 4); }
+        do { multiplexor = Random.Range(1f, 3f); }
         while (multiplexor == 0);
         print("multiplexor is : " + multiplexor);
 
