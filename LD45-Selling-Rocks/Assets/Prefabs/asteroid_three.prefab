@@ -106,3 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 0.3
+  m_temperatureChange: 30
+  m_waterChange: 3000
+  m_oxygenChange: 15
+  m_pressureChange: 300

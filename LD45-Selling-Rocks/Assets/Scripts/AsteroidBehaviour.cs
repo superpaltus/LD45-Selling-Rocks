@@ -6,17 +6,17 @@ public class AsteroidBehaviour : MonoBehaviour
 {
     [SerializeField] private float m_speed = 10f;
 
-    private int m_temperatureChange;
-    private int m_waterChange;
-    private int m_oxygenChange;
-    private int m_pressureChange;
+    [SerializeField] private int m_temperatureChange = 30;
+    [SerializeField] private int m_waterChange = 3000;
+    [SerializeField] private int m_oxygenChange = 15;
+    [SerializeField] private int m_pressureChange = 300;
 
     private void Start()
     {
-        m_temperatureChange = Random.Range(-30, 31);
-        m_waterChange = Random.Range(-3000, 3001);
-        m_oxygenChange = Random.Range(-15, 16);
-        m_pressureChange = Random.Range(-300, 301);
+        m_temperatureChange = Random.Range(-m_temperatureChange, m_temperatureChange + 1);
+        m_waterChange = Random.Range(-m_waterChange, m_waterChange + 1);
+        m_oxygenChange = Random.Range(-m_oxygenChange, m_oxygenChange + 1);
+        m_pressureChange = Random.Range(-m_pressureChange, m_pressureChange + 1);
     }
 
     private void Update()

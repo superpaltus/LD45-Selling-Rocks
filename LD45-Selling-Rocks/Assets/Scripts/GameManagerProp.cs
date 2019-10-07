@@ -15,7 +15,7 @@ public class GameManagerProp : MonoBehaviour
     [Header("Main")]
 
     public float energyCollectSpeed = 1f;
-
+    [Range(0.01f,1f)]public float speedOfDecreasingValues = 0.5f;
     public int biomass = 1;
     public float time = 5;
     public int energy = 0;
@@ -101,15 +101,15 @@ public class GameManagerProp : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(0.6f);
-            pressure -= 1;
+            yield return new WaitForSeconds(speedOfDecreasingValues);
+            pressure -= Random.Range(1, 21);
         }
     }
     IEnumerator RandomFlukeOxygen()
     {
         while (true)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(speedOfDecreasingValues);
             oxygen -= 1;
         }
     }
@@ -117,18 +117,19 @@ public class GameManagerProp : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
-            temperature -= 1;
+            yield return new WaitForSeconds(speedOfDecreasingValues);
+            temperature -= Random.Range(1, 3);
         }
     }
     IEnumerator RandomFlukeHydrogen()
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.1f);
-            water -= 1;
+            yield return new WaitForSeconds(speedOfDecreasingValues);
+            water -= Random.Range(1, 11);
         }
     }
+
     IEnumerator AsteroidCreation()
     {
         while (true)
